@@ -1,4 +1,4 @@
-FROM php:8.2-cli
+FROM php:8.4-cli
 
 # Installer les dépendances système et bibliothèques
 RUN apt-get update && apt-get install -y \

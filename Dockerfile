@@ -32,8 +32,11 @@ RUN composer install --no-dev --optimize-autoloader
 # Permissions pour storage et bootstrap/cache
 RUN chmod -R 777 storage bootstrap/cache
 
+# Rendre start.sh exécutable
+RUN chmod +x start.sh
+
 # Exposer le port par défaut
 EXPOSE 8080
 
 # Script d'exécution au démarrage du container Render
-CMD ["sh", "-c", "php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}"]
+CMD ["sh", "./start.sh"]
